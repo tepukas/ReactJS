@@ -15,6 +15,16 @@ function TaskList() {
         setTasks([...tasks, newTask]);
     }
 
+    function handleCompleteTask(taskId) {
+        setTasks(
+            tasks.map((task) =>
+                task.id === taskId
+                    ? { ...task, completed: true }
+                    : task
+            )
+        );
+    }
+
     return (
         <div>
             <TaskForm onAdd={handleAddTask} />
@@ -24,6 +34,7 @@ function TaskList() {
                     <TaskItem
                         key={task.id}
                         task={task}
+                        onComplete={handleCompleteTask}
                     />
                 ))}
             </ul>
