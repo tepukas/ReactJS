@@ -25,19 +25,30 @@ function TaskList() {
         );
     }
 
+    function handleDeleteTask(taskId) {
+        setTasks(
+            tasks.filter((task) => task.id !== taskId)
+        );
+    }
+
     return (
         <div>
             <TaskForm onAdd={handleAddTask} />
 
-            <ul>
-                {tasks.map((task) => (
-                    <TaskItem
-                        key={task.id}
-                        task={task}
-                        onComplete={handleCompleteTask}
-                    />
-                ))}
-            </ul>
+            {tasks.length === 0 ? (
+                <p>Užduočių dar nėra.</p>
+            ) : (
+                <ul>
+                    {tasks.map((task) => (
+                        <TaskItem
+                            key={task.id}
+                            task={task}
+                            onComplete={handleCompleteTask}
+                            onDelete={handleDeleteTask}
+                        />
+                    ))}
+                </ul>
+            )}
         </div>
     );
 }

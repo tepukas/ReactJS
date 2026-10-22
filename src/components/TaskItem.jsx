@@ -1,4 +1,4 @@
-function TaskItem({ task, onComplete }) {
+function TaskItem({ task, onComplete, onDelete }) {
     return (
         <li>
       <span
@@ -16,6 +16,12 @@ function TaskItem({ task, onComplete }) {
                 disabled={task.completed}
             >
                 Pažymėti kaip atliktą
+            </button>
+
+            <button
+                onClick={() => onDelete(task.id)}
+            >
+                Ištrinti
             </button>
         </li>
     );
