@@ -1,4 +1,4 @@
-function Cart({ cart }) {
+function Cart({ cart, onRemove }) {
     const totalPrice = cart.reduce(
         (total, item) =>
             total + item.price * item.quantity,
@@ -10,7 +10,12 @@ function Cart({ cart }) {
             <h2>Krepšelis</h2>
 
             {cart.length === 0 ? (
-                <p>Krepšelis tuščias.</p>
+                <div>
+                    <p>Krepšelis tuščias.</p>
+                    <p>
+                        <strong>Bendra kaina: 0,00 Eur</strong>
+                    </p>
+                </div>
             ) : (
                 <div>
                     {cart.map((item) => {
@@ -36,6 +41,12 @@ function Cart({ cart }) {
                                     Suma:{" "}
                                     {linePrice.toFixed(2)} Eur
                                 </p>
+
+                                <button
+                                    onClick={() => onRemove(item.id)}
+                                >
+                                    Pašalinti iš krepšelio
+                                </button>
                             </div>
                         );
                     })}
