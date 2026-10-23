@@ -10,6 +10,7 @@ function GuessGame() {
     const [guess, setGuess] = useState("");
     const [attempts, setAttempts] = useState(0);
     const [message, setMessage] = useState("");
+    const [finished, setFinished] = useState(false);
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -40,6 +41,7 @@ function GuessGame() {
             setMessage("Bandyk mažesnį");
         } else {
             setMessage("Teisingai!");
+            setFinished(true);
         }
     }
 
@@ -51,6 +53,7 @@ function GuessGame() {
                 guess={guess}
                 onGuessChange={setGuess}
                 onSubmit={handleSubmit}
+                disabled={finished}
             />
 
             <p>Bandymų skaičius: {attempts}</p>

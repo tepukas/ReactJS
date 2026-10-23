@@ -1,4 +1,8 @@
 function Cart({ cart, onRemove }) {
+    function formatPrice(price) {
+        return price.toFixed(2).replace(".", ",");
+    }
+
     const totalPrice = cart.reduce(
         (total, item) =>
             total + item.price * item.quantity,
@@ -30,7 +34,7 @@ function Cart({ cart, onRemove }) {
 
                                 <p>
                                     Vieneto kaina:{" "}
-                                    {item.price.toFixed(2)} Eur
+                                    {formatPrice(item.price)} Eur
                                 </p>
 
                                 <p>
@@ -39,7 +43,7 @@ function Cart({ cart, onRemove }) {
 
                                 <p>
                                     Suma:{" "}
-                                    {linePrice.toFixed(2)} Eur
+                                    {formatPrice(linePrice)} Eur
                                 </p>
 
                                 <button
@@ -54,7 +58,7 @@ function Cart({ cart, onRemove }) {
                     <p>
                         <strong>
                             Bendra kaina:{" "}
-                            {totalPrice.toFixed(2)} Eur
+                            {formatPrice(totalPrice)} Eur
                         </strong>
                     </p>
                 </div>

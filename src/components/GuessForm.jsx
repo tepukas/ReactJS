@@ -2,6 +2,7 @@ function GuessForm({
                        guess,
                        onGuessChange,
                        onSubmit,
+                       disabled,
                    }) {
     return (
         <form onSubmit={onSubmit}>
@@ -12,9 +13,13 @@ function GuessForm({
                     onGuessChange(event.target.value)
                 }
                 placeholder="Įveskite skaičių"
+                disabled={disabled}
             />
 
-            <button type="submit">
+            <button
+                type="submit"
+                disabled={disabled}
+            >
                 Spėti
             </button>
         </form>

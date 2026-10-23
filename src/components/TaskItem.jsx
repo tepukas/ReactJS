@@ -1,11 +1,7 @@
 function TaskItem({ task, onComplete, onDelete }) {
     return (
         <li>
-      <span
-          style={{
-              textDecoration: task.completed ? "line-through" : "none",
-          }}
-      >
+      <span className={task.completed ? "completed-task" : ""}>
         {task.text}
       </span>
 
@@ -18,9 +14,7 @@ function TaskItem({ task, onComplete, onDelete }) {
                 Pažymėti kaip atliktą
             </button>
 
-            <button
-                onClick={() => onDelete(task.id)}
-            >
+            <button onClick={() => onDelete(task.id)}>
                 Ištrinti
             </button>
         </li>

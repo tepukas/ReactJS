@@ -1,10 +1,12 @@
 function ProductItem({ product, onAdd }) {
+    const price = product.price.toFixed(2).replace(".", ",");
+
     return (
         <div>
             <h3>{product.name}</h3>
 
             <p>
-                Kaina: {product.price.toFixed(2)} Eur
+                Kaina: {price} Eur
             </p>
 
             <button onClick={() => onAdd(product)}>
