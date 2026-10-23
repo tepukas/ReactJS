@@ -2,6 +2,7 @@ import { useState } from "react";
 import TaskList from "./components/TaskList";
 import ProductList from "./components/ProductList";
 import Cart from "./components/Cart";
+import GuessGame from "./components/GuessGame";
 
 function App() {
     const [products] = useState([
@@ -74,6 +75,11 @@ function App() {
                 cart={cart}
                 onRemove={handleRemoveFromCart}
             />
+
+            <hr />
+
+            <h1>C dalis – Skaičių spėjimo žaidimas</h1>
+            <GuessGame />
         </div>
     );
 }
