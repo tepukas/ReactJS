@@ -8,12 +8,31 @@ function GuessGame() {
     );
 
     const [guess, setGuess] = useState("");
+    const [attempts, setAttempts] = useState(0);
     const [message, setMessage] = useState("");
 
     function handleSubmit(event) {
         event.preventDefault();
 
-        const number = Number(guess);
+        const trimmedGuess = guess.trim();
+
+        if (trimmedGuess === "") {
+            setMessage("Įveskite sveiką skaičių nuo 1 iki 100.");
+            return;
+        }
+
+        const number = Number(trimmedGuess);
+
+        if (
+            !Number.isInteger(number) ||
+            number < 1 ||
+            number > 100
+        ) {
+            setMessage("Įveskite sveiką skaičių nuo 1 iki 100.");
+            return;
+        }
+
+        setAttempts(attempts + 1);
 
         if (number < secretNumber) {
             setMessage("Bandyk didesnį");
@@ -33,6 +52,8 @@ function GuessGame() {
                 onGuessChange={setGuess}
                 onSubmit={handleSubmit}
             />
+
+            <p>Bandymų skaičius: {attempts}</p>
 
             <Message message={message} />
         </div>
